@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%231f5e3d%27/%3E%3Cpath d=%27M32 14v36M14 32h36%27 stroke=%27white%27 stroke-width=%278%27 stroke-linecap=%27round%27/%3E%3C/svg%3E">
+<meta name="theme-color" content="#ffffff">
+<title>Meu Remédio Mais Perto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f8fbf9;--card:#fff;--tx:#1e3328;--mut:#4d6858;--g:#2a7a50;--gd:#1f5e3d;--g2:#edf7f0;--g3:#d9eee0;--bd:#d5e8db;--warn:#fff9e6;--wb:#e3c35a;--sh:rgba(31,94,61,.10);--on:#fff;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html{font-size:20px;scroll-padding-top:5rem}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Nunito Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.55}
+h1,h2{font-family:Fraunces,Georgia,"Times New Roman",serif;letter-spacing:-.01em}
+.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--card) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--bd);padding:.5rem .8rem;display:flex;gap:.5rem;align-items:center;justify-content:space-between}
+.top .row{margin:0;flex:0 0 auto}
+main{max-width:46rem;margin:0 auto;padding:1rem}
+.hero{background:linear-gradient(160deg,var(--g3),var(--g2) 55%,var(--card));border:1px solid var(--bd);border-radius:1.6rem;padding:1.4rem 1.2rem;margin:.3rem 0 1rem;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-2.5rem;top:-2.5rem;width:9rem;height:9rem;border-radius:50%;background:radial-gradient(circle,var(--g3),transparent 70%);opacity:.8}
+h1{font-size:2rem;line-height:1.15;margin:.1rem 0 .4rem;color:var(--gd)}
+h2{font-size:1.45rem;margin:.6rem 0;color:var(--gd)}
+p{margin:.5rem 0}
+.sub{color:var(--mut);font-weight:600;position:relative;z-index:1}
+button,.btn{font:inherit;font-weight:800;border:2px solid var(--g);background:var(--card);color:var(--gd);border-radius:1rem;padding:.75rem 1rem;min-height:3.2rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;text-align:center;transition:background .2s,transform .1s}
+button:hover,.btn:hover{background:var(--g2)}
+button:active,.btn:active{transform:scale(.99)}
+.pri{background:var(--g);color:var(--on);border-color:var(--g)}
+.pri:hover{background:var(--gd);color:var(--on)}
+:focus-visible{outline:4px solid #e39a1b;outline-offset:2px}
+.menu{display:grid;gap:.7rem;margin:1rem 0}
+.menu button{justify-content:flex-start;text-align:left;font-size:1.1rem;padding:.8rem 1rem;box-shadow:0 2px 8px var(--sh);border-color:var(--bd);border-width:1.5px}
+.menu button.pri{border-color:var(--g)}
+.menu .i{font-size:1.5rem;width:2.8rem;height:2.8rem;border-radius:50%;background:var(--g2);display:inline-flex;align-items:center;justify-content:center;flex:none}
+.menu .pri .i{background:rgba(255,255,255,.2)}
+.menu .go{margin-left:auto;font-size:1.5rem;opacity:.6}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:1.2rem;padding:1.1rem;margin:.8rem 0;box-shadow:0 3px 12px var(--sh)}
+.warn{background:var(--warn);border:1.5px solid var(--wb);border-radius:1rem;padding:.8rem 1rem;margin:.8rem 0}
+.small{font-size:.85rem;color:var(--mut)}
+.row{display:flex;gap:.6rem;flex-wrap:wrap;margin:.5rem 0}
+.row>*{flex:1 1 12rem}
+input[type=search]{width:100%;font:inherit;font-size:1.15rem;padding:.9rem 1rem;border:2px solid var(--g);border-radius:1rem;background:var(--card);color:var(--tx);box-shadow:inset 0 1px 3px var(--sh)}
+.sug{display:flex;gap:.5rem;flex-wrap:wrap;margin:.5rem 0}
+.sug button{min-height:2.6rem;padding:.35rem .9rem;font-weight:700;border-radius:2rem;border-width:1.5px}
+label.ck{display:flex;gap:.8rem;align-items:flex-start;padding:.75rem;border:1.5px solid var(--bd);border-radius:1rem;margin:.5rem 0;background:var(--card);cursor:pointer}
+label.ck input{width:2rem;height:2rem;flex:none;accent-color:var(--g)}
+details{background:var(--card);border:1px solid var(--bd);border-radius:1.1rem;margin:.6rem 0;padding:.2rem 1rem;box-shadow:0 2px 8px var(--sh)}
+summary{cursor:pointer;font-weight:800;padding:.7rem 0;min-height:2.8rem;color:var(--gd)}
+.ok{background:var(--g2);border:2px solid var(--g);border-radius:1.1rem;padding:1rem;margin:.8rem 0;font-weight:800}
+.tag{display:inline-block;background:var(--g2);border:1px solid var(--bd);border-radius:.6rem;padding:.1rem .55rem;margin:.15rem .2rem 0 0;font-size:.92rem;font-weight:600}
+.pr{padding:.35rem 0;border-top:1px dashed var(--bd)}
+.pr:first-of-type{border-top:0}
+hr{border:0;border-top:1px solid var(--bd);margin:1rem 0}
+footer{max-width:46rem;margin:1rem auto;padding:1rem;border-top:1px solid var(--bd);font-size:.85rem;color:var(--mut)}
+footer a{color:var(--g)}
+section[hidden]{display:none}
+@media (prefers-reduced-motion:no-preference){section{animation:f .3s ease}@keyframes f{from{opacity:0;transform:translateY(6px)}}}
+@media (min-width:700px){.menu{grid-template-columns:1fr 1fr}}
+
+:root{--bg:#fff;--card:#fff;--tx:#1b2b22;--mut:#5b6b62;--g:#1f5e3d;--gd:#174a30;--g2:#f4f8f5;--g3:#e7efe9;--bd:#e3e9e5;--sh:rgba(23,74,48,.07);--gold:#b08d57;--on:#fff}
+body{background:#fff}
+.top{background:rgba(255,255,255,.95);border-bottom:1px solid var(--bd)}
+.hero{background:#fff;border:0;border-bottom:1px solid var(--bd);border-radius:0;padding:1.4rem .2rem 1.4rem;margin:.2rem 0 .6rem}
+.hero::after{display:none}
+.hero::before{content:"";display:block;width:3rem;height:2px;background:var(--gold);margin-bottom:1rem}
+h1{font-size:2.2rem;font-weight:600}
+h2{font-weight:600}
+.sub{font-family:Fraunces,Georgia,serif;font-weight:400;font-size:1.12rem}
+button,.btn{border-radius:.6rem;letter-spacing:.01em;border:1px solid var(--g)}
+.menu button{border:1px solid var(--bd);box-shadow:none;border-radius:.8rem;padding:.9rem 1.1rem}
+.menu button:not(.pri):hover{border-color:var(--g);background:#fafcfb}
+.menu .i{background:transparent;border:1px solid var(--bd);color:var(--g)}
+.menu .pri{border-color:var(--g)}
+.menu .pri .i{background:transparent;border-color:rgba(255,255,255,.55);color:#fff}
+.menu .go{color:var(--gold);opacity:1}
+.menu .pri .go{color:#fff}
+.card{border:1px solid var(--bd);border-radius:.9rem;box-shadow:0 1px 3px var(--sh)}
+.warn{background:#fcfaf4;border:1px solid #e6d9b8;border-radius:.8rem}
+.ok{background:#f4f8f5;border:1px solid var(--g);border-radius:.8rem}
+details{border-radius:.8rem;box-shadow:none}
+input[type=search]{border-radius:.7rem;border:1px solid var(--g);box-shadow:none}
+.tag{background:#f4f8f5}
+label.ck{border-radius:.8rem}
+[hidden]{display:none!important}
+main{padding-bottom:6rem}
+.fab{position:fixed;right:max(.8rem,env(safe-area-inset-right,0px));bottom:calc(.8rem + env(safe-area-inset-bottom,0px));z-index:9;display:flex;flex-direction:column;align-items:flex-end;gap:.5rem}
+.fabmain{border-radius:2rem;padding:.8rem 1.3rem;box-shadow:0 8px 22px rgba(23,74,48,.32)}
+.fabctl{display:flex;gap:.5rem}
+.fabctl button{border-radius:2rem;padding:.8rem 1.3rem;box-shadow:0 8px 22px rgba(23,74,48,.25);background:#fff}
+.fabctl button.pri{background:var(--g)}
+#ttsmsg{position:fixed;left:.8rem;right:.8rem;bottom:5.5rem;z-index:10;margin:0}
+</style>
+</head>
+<body>
+<div class="top" role="navigation" aria-label="Menu superior">
+  <button type="button" onclick="show('home')"> Início</button>
+  <div class="row">
+    <button type="button" onclick="fz(-1)" aria-label="Diminuir letra" style="flex:none">A−</button>
+    <button type="button" onclick="fz(1)" aria-label="Aumentar letra" style="flex:none">A+</button>
+  </div>
+</div>
+<noscript><p style="padding:1rem;font-family:sans-serif">Este site precisa do JavaScript ativado para funcionar.</p></noscript>
+<main id="main">
+
+<section id="home" data-read>
+  <div class="hero">
+    <h1>Meu Remédio Mais Perto</h1>
+    <p class="sub">Informações para ajudar você a encontrar e retirar seus medicamentos.</p>
+    <p style="position:relative;z-index:1">Olá! Seja bem-vindo(a). Escolha abaixo o que você quer fazer.</p>
+  </div>
+  <div class="menu">
+    <button class="pri" type="button" onclick="show('busca')"><span class="i" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></span> Pesquisar medicamento <span class="go" aria-hidden="true">›</span></button>
+    <button type="button" onclick="show('lista')"><span class="i" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></span> Preparar minha ida <span class="go" aria-hidden="true">›</span></button>
+    <button type="button" onclick="show('locais')"><span class="i" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s6.5-5.7 6.5-11A6.5 6.5 0 0 0 5.5 10c0 5.3 6.5 11 6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg></span> Ver farmácias e rotas <span class="go" aria-hidden="true">›</span></button>
+    <button type="button" onclick="show('duvidas')"><span class="i" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M9.7 9.6a2.4 2.4 0 1 1 3.4 2.2c-.7.4-1.1.9-1.1 1.7"/><path d="M12 16.6v.1"/></svg></span> Tirar dúvidas <span class="go" aria-hidden="true">›</span></button>
+  </div>
+  <div class="card" id="caminho">
+    <h2>Não sabe por onde começar? Monte seu caminho!</h2>
+    <div id="cam"></div>
+  </div>
+</section>
+
+<section id="busca" hidden data-read>
+  <h2>Onde posso procurar meu medicamento?</h2>
+  <p>Digite o nome do medicamento para consultar as listas disponíveis.</p>
+  <label for="q" class="small">Nome do medicamento (pode escrever sem acento)</label>
+  <input id="q" type="search" autocomplete="off" placeholder="Exemplo: metformina" aria-describedby="sug">
+  <div class="sug" id="sug" aria-live="polite"></div>
+  <div id="res" aria-live="polite"></div>
+  <div class="warn"><strong>A presença na lista não garante que o medicamento esteja disponível no momento. Consulte a farmácia antes de sair de casa.</strong></div>
+  <p class="small" id="fontes"></p>
+  <div class="row"><button type="button" onclick="show('lista')"> Preparar minha ida</button><button type="button" onclick="show('locais')"> Ver farmácias e rotas</button></div>
+</section>
+
+<section id="lista" hidden data-read>
+  <h2>Preparar minha ida</h2>
+  <p>Marque o que você já separou:</p>
+  <div id="ck"></div>
+  <div id="pronto" class="ok" hidden role="status">&#10003; Tudo pronto para ir à farmácia!<br><span style="font-weight:400">Confira também se o medicamento está disponível e se há alguma exigência específica para a retirada.</span></div>
+  <p class="small">Esta lista é um apoio geral e não substitui as orientações da farmácia.</p>
+  <div class="row"><button type="button" onclick="limpa()"> Limpar e começar novamente</button><button type="button" onclick="show('home')"> Voltar ao início</button></div>
+</section>
+
+<section id="locais" hidden data-read>
+  <h2>Encontre a farmácia</h2>
+  <div id="loc"></div>
+  <h2 id="ubsT">UBS de referência</h2>
+  <div id="ubs"></div>
+  <p class="small">Se o aplicativo pedir sua localização, você escolhe se permite. Horários podem mudar: confirme antes de sair. Dúvidas sobre a lista municipal: Diretoria de Assistência Farmacêutica da Prefeitura, (74) 3612-6550 (número que consta na REMUME 2025).</p>
+</section>
+
+<section id="duvidas" hidden data-read>
+  <h2>Dúvidas frequentes</h2>
+  <div id="faq"></div>
+  <div class="warn"><strong>As regras podem variar conforme o medicamento, a receita e o serviço. Em caso de dúvida, consulte a farmácia ou a UBS.</strong></div>
+</section>
+
+
+
+</main>
+<div class="warn" id="ttsmsg" hidden role="alert">A leitura em voz alta não está disponível neste aparelho. Você pode ler os textos na tela.</div>
+<div class="fab">
+  <div id="fabctl" class="fabctl" hidden><button type="button" onclick="pausa()" id="pbtn">Pausar</button><button type="button" class="pri" onclick="para()">Parar</button></div>
+  <button type="button" id="fabmain" class="fabmain pri" onclick="ouvir()" aria-label="Ouvir informações desta página em voz alta"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v4h3.5L12 18V6L7.5 10z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18 6.5a7.5 7.5 0 0 1 0 11"/></svg><span>Ouvir informações</span></button>
+</div>
+<footer>
+  <p><strong>IESC II. ESTÁCIO - IDOMED</strong></p>
+  <p style="font-size:.75rem;margin:.2rem 0 .8rem">Estudantes: Analice Delmondes, Anna Julia Medrado, Evelly Mendes, Isabelly Vitória Viana e Patrícia Laiane Batista.</p>
+  <p>Projeto educativo desenvolvido para apoiar a comunidade da UBS Alto do Cruzeiro, em Juazeiro – BA. Não é uma página oficial da Prefeitura, da UBS ou do Ministério da Saúde.</p>
+  <p><strong>As informações devem ser confirmadas com a UBS e as farmácias, pois listas, regras e disponibilidade podem mudar.</strong></p>
+  <p>Fontes: <a href="https://www.juazeiro.ba.gov.br/wp-content/uploads/2025/05/PMJ-Relacao-Municipal-de-Medicamentos-2025-REMUME-1.pdf" target="_blank" rel="noopener">REMUME de Juazeiro – BA (2025)</a>; Elenco de Medicamentos e Insumos do Farmácia Popular (Ministério da Saúde); dados da Farmácia Vitória e horários fornecidos pela equipe do projeto.</p>
+  <p>Última atualização: <span id="upd"></span></p>
+</footer>
+
+<script>
+/* ===== DADOS EDITÁVEIS (atualize aqui, sem mexer no visual) ===== */
+var CONFIG={
+  ultimaAtualizacao:"27/10/2026",
+  fonteRemume:"REMUME Juazeiro – BA 2025 (lista em ordem alfabética)", dataRemume:"27/10/2026",
+  fontePopular:"Elenco de Medicamentos e Insumos – Farmácia Popular (PDF atualizado em 31/08/2026)", dataPopular:"27/10/2026"
+};
+/* Locais de acesso (REMUME). Códigos usados na lista abaixo: */
+var LC={A:"Farmácia da Família, Farmácia Central, USF ZR",B:"Farmácia da Família, Farmácia Central",C:"Farmácia Central",D:"Farmácia da Família, Farmácia Central, CAPS AD",E:"Kit de emergência das USF (não é retirada pelo público)",F:"Centro de Saúde III, USF"};
+/* REMUME: [medicamento, apresentação, local (código ou texto), receita: 1=controle especial, 2=receita em 2 vias] */
+var REMUME=[
+["Aciclovir","Comprimido 200 mg","Farmácia da Família, Farmácia Central; DST Centro de Saúde 3"],
+["Aciclovir","Comprimido 400 mg","DST / Centro de Saúde 3"],
+["Ácido acetilsalicílico","Comprimido 100 mg","Farmácia da Família, Farmácia Central, USF ZR, kit de emergência USF"],
+["Ácido fólico","Comprimido 5 mg","A"],["Ácido fólico","Solução oral 0,2 mg/mL","A"],
+["Ácido valpróico","Comprimido 500 mg","D",1],["Ácido valpróico","Xarope (concentração a confirmar)","D",1],
+["Albendazol","Comprimido mastigável 400 mg","A"],["Albendazol","Suspensão oral 40 mg/mL","A"],
+["Alendronato de sódio","Comprimido 70 mg","A"],
+["Algestona acetofenida + estradiol enantato","Solução injetável 150 + 10 mg/mL","A"],
+["Amiodarona","Comprimido 200 mg","A"],
+["Amitriptilina","Comprimido 25 mg","D",1],
+["Amoxicilina","Cápsula 500 mg","A",2],["Amoxicilina","Suspensão oral (concentração a confirmar)","A",2],
+["Amoxicilina + clavulanato de potássio","Comprimido 500 mg + 125 mg","Farmácia da Família, Farmácia Central, vigilância epidemiológica e DST (Centro de Saúde 3)",2],
+["Amoxicilina + clavulanato de potássio","Suspensão oral (concentração a confirmar)","Farmácia da Família, Farmácia Central, vigilância epidemiológica e DST (Centro de Saúde 3)",2],
+["Anlodipino","Comprimido 5 mg","A"],["Anlodipino","Comprimido 10 mg","A"],
+["Atenolol","Comprimido 50 mg","B"],
+["Atropina","Solução injetável 0,25 mg/mL","E"],
+["Azitromicina","Comprimido 500 mg","A",2],["Azitromicina","Suspensão oral 40 mg/mL","A",2],
+["Benzilpenicilina benzatina","Pó para suspensão injetável 1.200.000 UI","Uso para sífilis: USF e DST Centro de Saúde 2",2],
+["Benzilpenicilina benzatina","Pó para suspensão injetável 600.000 UI","Uso para sífilis: USF e DST Centro de Saúde 3",2],
+["Biperideno","Comprimido 2 mg","D",1],
+["Carbamazepina","Comprimido 200 mg","D",1],["Carbamazepina","Suspensão oral 20 mg/mL","D",1],
+["Carbonato de cálcio","Comprimido 1250 mg (500 mg de cálcio)","A"],
+["Carbonato de cálcio + colecalciferol","Comprimido 1250 mg (500 mg de cálcio) + 400 UI","A"],
+["Carbonato de lítio","Comprimido 300 mg","D",1],
+["Carvedilol","Comprimido 3,125 mg","B"],["Carvedilol","Comprimido 12,5 mg","B"],["Carvedilol","Comprimido 25 mg","B"],
+["Cefalexina","Suspensão oral (concentração a confirmar)","A",2],["Cefalexina","Cápsula 500 mg","A",2],
+["Ciprofloxacino","Comprimido 500 mg","A",2],
+["Clofazimina","Comprimido 50 mg","F",2],["Clofazimina","Comprimido 100 mg","F",2],
+["Clomipramina","Comprimido 25 mg","D",1],
+["Clonazepam","Comprimido 2 mg","D",1],["Clonazepam","Solução oral 2,5 mg/mL","D",1],
+["Cloreto de sódio 0,9%","Solução nasal","A"],
+["Clorpromazina","Comprimido 100 mg","D",1],["Clorpromazina","Solução injetável 25 mg/5 mL","CAPS",1],
+["Dexametasona","Solução injetável 4 mg/mL","E"],["Dexametasona","Creme 0,1%","B"],
+["Dexclorfeniramina","Solução oral 0,4 mg/mL","A"],
+["Diazepam","Comprimido 5 mg","D",1],["Diazepam","Comprimido 10 mg","D",1],["Diazepam","Solução injetável 5 mg/mL","Kit de emergência USF, CAPS",1],
+["Diclofenaco sódico","Solução injetável 75 mg/3 mL","E"],
+["Digoxina","Comprimido 0,25 mg","A"],
+["Dipirona","Comprimido 500 mg","A"],["Dipirona","Solução oral (concentração a confirmar)","A"],["Dipirona","Solução injetável 500 mg/mL","E"],
+["Enalapril","Comprimido 5 mg","A"],["Enalapril","Comprimido 20 mg","A"],
+["Escopolamina butilbrometo","Solução injetável 4 mg/mL","E"],
+["Espironolactona","Comprimido 25 mg","A"],["Espironolactona","Comprimido 100 mg","A"],
+["Estreptomicina","Solução injetável 1 g","F",2],["Etambutol","Comprimido 400 mg","F",2],["Etionamida","Comprimido 250 mg","F",2],
+["Fenitoína","Comprimido 100 mg","D",1],
+["Fenobarbital","Comprimido 100 mg","D",1],["Fenobarbital","Solução oral 40 mg/mL","D",1],["Fenobarbital","Solução injetável 100 mg/mL","E",1],
+["Fluconazol","Cápsula 150 mg","A"],
+["Fluoxetina","Cápsula 20 mg","D",1],
+["Furosemida","Comprimido 40 mg","A"],
+["Glibenclamida","Comprimido 5 mg","A"],
+["Guaco","Xarope","B"],
+["Haloperidol","Comprimido 1 mg","D",1],["Haloperidol","Comprimido 5 mg","D",1],["Haloperidol","Solução oral 2 mg/mL","D",1],["Haloperidol","Solução injetável 5 mg/mL","Kit de emergência USF, CAPS",1],
+["Haloperidol decanoato","Solução injetável 50 mg/mL","CAPS AD, CAPS i, CAPS II",1],
+["Hidroclorotiazida","Comprimido 25 mg","A"],
+["Hidrocortisona succinato sódico","Pó para suspensão injetável 100 mg","E"],
+["Ibuprofeno","Comprimido 600 mg","A"],["Ibuprofeno","Solução oral gotas 50 mg/mL","A"],
+["Insulina humana NPH","Suspensão injetável 100 UI/mL","A"],
+["Insulina humana regular","Solução injetável 100 UI/mL","A"],
+["Ipratrópio brometo","Solução para inalação (concentração a confirmar)","A"],
+["Isoniazida","Comprimido 100 mg","F",2],["Isoniazida + rifampicina","Comprimido 150 mg + 75 mg","F",2],
+["Isoniazida + rifampicina + pirazinamida + etambutol (RIPE)","Comprimido 75 + 150 + 400 + 275 mg","F",2],
+["Levodopa + carbidopa","Comprimido 250 mg + 25 mg","C"],
+["Levonorgestrel","Comprimido 0,75 mg","A"],
+["Levonorgestrel + etinilestradiol","Comprimido 0,15 mg + 0,03 mg","A"],
+["Levotiroxina sódica","Comprimido 25 mcg","B"],["Levotiroxina sódica","Comprimido 50 mcg","B"],["Levotiroxina sódica","Comprimido 100 mcg","B"],
+["Lidocaína sem epinefrina","Solução injetável 2%","E"],
+["Loratadina","Comprimido 10 mg","B"],
+["Losartana potássica","Comprimido 50 mg","A"],
+["Medroxiprogesterona acetato","Solução injetável 150 mg/mL","A"],
+["Medroxiprogesterona acetato + estradiol cipionato","Solução injetável 25 + 5 mg/mL","A"],
+["Metformina","Comprimido 850 mg","A"],
+["Metildopa","Comprimido 250 mg","A"],
+["Metoclopramida","Solução injetável 10 mg/2 mL","E"],
+["Metoprolol succinato","Comprimido 25 mg","B"],["Metoprolol succinato","Comprimido 50 mg","B"],["Metoprolol succinato","Comprimido 100 mg","B"],
+["Metronidazol","Gel vaginal 10%","A",2],["Metronidazol","Comprimido 250 mg","A",2],["Metronidazol","Suspensão oral 40 mg/mL","A",2],
+["Miconazol nitrato","Creme vaginal 2%","A"],
+["Minociclina","Comprimido 100 mg","F",2],
+["Poliquimioterapia da hanseníase (multibacilar e paucibacilar, adulto e infantil)","Rifampicina + dapsona (+ clofazimina)","F",2],
+["Nistatina","Suspensão oral 100.000 UI/mL","B"],
+["Nistatina + metronidazol","Creme vaginal (uso restrito)","Uso restrito ao serviço de DST (Centro de Saúde 3)",2],
+["Nitrofurantoína","Cápsula 100 mg (uso restrito, para gestantes)","Farmácia da Família, Farmácia Central",2],
+["Noretisterona","Comprimido 0,35 mg","A"],
+["Noretisterona + estradiol","Solução injetável 50 mg/mL + 5 mg/mL","A"],
+["Nortriptilina","Comprimido 25 mg","D",1],["Nortriptilina","Comprimido 50 mg","D",1],
+["Ofloxacino","Comprimido 400 mg","F",2],
+["Óleo de girassol cicatrizante","Loção oleosa, frasco 100 mL (uso restrito)","Uso restrito às UBS"],
+["Omeprazol","Cápsula 20 mg","A"],
+["Paracetamol","Comprimido 500 mg","A"],["Paracetamol","Solução oral 200 mg/mL","A"],
+["Permetrina","Loção 1%, frasco 60 mL","B"],
+["Pirazinamida","Comprimido 500 mg","F",2],["Pirazinamida","Solução oral 3%","F",2],
+["Prednisona","Comprimido 5 mg","B"],["Prednisona","Comprimido 20 mg","Centro de Saúde III, Farmácia da Família, Farmácia Central, USF ZR"],
+["Prednisolona","Solução oral 1 mg/mL","Farmácia da Família, Farmácia Central, USF ZR, CAPS"],
+["Prometazina","Comprimido 25 mg","Farmácia da Família, Farmácia Central, USF ZR, CAPS"],["Prometazina","Solução injetável 25 mg/mL","Kit de emergência USF, CAPS"],
+["Propranolol","Comprimido 40 mg","A"],
+["Rifampicina","Comprimido 300 mg","F",2],["Rifampicina","Suspensão oral 2%","F",2],
+["Risperidona","Comprimido 1 mg","CAPS (atendimento especializado)",1],["Risperidona","Comprimido 3 mg","CAPS (atendimento especializado)",1],["Risperidona","Solução oral 1 mg/mL (uso restrito, crianças)","CAPS (atendimento especializado)",1],
+["Sais para reidratação oral","Sachê 27,9 g","A"],
+["Salbutamol","Aerossol 100 mcg/dose","A"],
+["Sinvastatina","Comprimido 20 mg","A"],["Sinvastatina","Comprimido 40 mg","A"],
+["Sulfametoxazol + trimetoprima","Comprimido 400 mg + 80 mg","A",2],["Sulfametoxazol + trimetoprima","Suspensão oral 40 + 8 mg/mL","A",2],
+["Sulfato ferroso","Solução oral 25 mg/mL","A"],["Sulfato ferroso","Comprimido 40 mg","A"],
+["Talidomida","Comprimido 100 mg","Centro de Saúde III, CIDHA",1]
+];
+/* Farmácia Popular: [nome, "apresentações", v, "marca (opcional)"]
+   v=1 oferecido na Farmácia Vitória (informado pela equipe); v=0 consta no PDF, mas NÃO listado para a Vitória */
+var POPULAR=[
+["brometo de ipratrópio","0,02 mg; 0,25 mg",1],
+["dipropionato de beclometasona","200 mcg; 250 mcg; 50 mcg; 50 mcg/dose",1],
+["sulfato de salbutamol","100 mcg; 5 mg",1],
+["cloridrato de metformina","500 mg; 500 mg (ação prolongada); 850 mg",1],
+["glibenclamida","5 mg",1],
+["insulina humana regular","100 UI/mL",0],
+["insulina humana","100 UI/mL",0],
+["atenolol","25 mg",1],
+["besilato de anlodipino","5 mg",1],
+["captopril","25 mg",1],
+["cloridrato de propranolol","40 mg",1],
+["hidroclorotiazida","25 mg",1],
+["losartana potássica","50 mg",1],
+["maleato de enalapril","10 mg",1],
+["espironolactona","25 mg",1],
+["furosemida","40 mg",1],
+["succinato de metoprolol","25 mg",1],
+["acetato de medroxiprogesterona","150 mg",0],
+["etinilestradiol + levonorgestrel","0,03 mg + 0,15 mg",1,"Ciclo 21"],
+["noretisterona","0,35 mg",0],
+["valerato de estradiol + enantato de noretisterona","5 mg + 50 mg",0],
+["alendronato de sódio","70 mg",1],
+["sinvastatina","10 mg; 20 mg; 40 mg",1],
+["carbidopa + levodopa","25 mg + 250 mg",1],
+["cloridrato de benserazida + levodopa","25 mg + 100 mg",1],
+["maleato de timolol","2,5 mg; 5 mg",1],
+["budesonida","32 mcg; 50 mcg",1],
+["dapagliflozina","10 mg",1],
+["absorvente higiênico","insumo",1],
+["fralda geriátrica","insumo",1]
+];
+var ALIAS={"ciclo 21":"etinilestradiol"};
+var LOCAIS=[
+ {n:"Farmácia Vitória — Farmácia Popular",e:"Rua Santa Isabel, 580 – Alto do Cruzeiro, Juazeiro – BA, CEP 48900-430",h:"Todos os dias, das 6h às 22h",t:"74988238667",tt:"(74) 98823-8667 (telefone e WhatsApp)"},
+ {n:"Farmácia da Família I",e:"BR-235 – Castelo Branco, Juazeiro – BA",h:"Terça a sexta, das 7h às 13h. Sábado e domingo: fechada. Segunda: a confirmar.",x:"A REMUME 2025 cita: Rodovia Lomanto Júnior, s/n, Castelo Branco."},
+ {n:"Farmácia da Família Central",e:"Praça Pedro P. Primo – Alagadiço, Juazeiro – BA, CEP 48904-125",h:"Terça a sexta, das 7h30 às 16h. Sábado e domingo: fechada. Segunda: a confirmar.",x:"Referência: ao lado do Camelódromo de Juazeiro."}
+];
+var UBS={n:"UBS Alto do Cruzeiro",e:"Rua da Liberdade, 374 – Alto do Cruzeiro, Juazeiro – BA, CEP 48905-457"};
+var CHECK=[
+ ["Separei meu documento com foto.",1],["Separei meu CPF.",1],["Peguei minha receita.",1],
+ ["Separei meu cartão da família / comprovante de residência.",1],
+ ["Conferi se minha receita está dentro do prazo de validade.",1],
+ ["Conferi as orientações da farmácia que vou visitar.",1],
+ ["Separei o cartão do SUS, caso a unidade solicite. (opcional)",0]
+];
+var FAQ=[
+["Posso retirar um medicamento para outra pessoa?","Em algumas situações, sim. A pessoa que vai buscar o medicamento pode precisar apresentar a receita, os documentos do paciente e os próprios documentos, além de procuração ou outro comprovante de representação, conforme as regras do programa e da situação. Antes de ir, consulte a farmácia para saber exatamente o que é necessário."],
+["Preciso levar a receita original?","Se sua receita for em papel, leve a receita original. No Farmácia Popular, receitas eletrônicas válidas também podem ser aceitas; confirme com a farmácia como apresentá-las. Na Farmácia da Família, consulte a unidade sobre as formas aceitas e eventuais exigências específicas. A lista municipal informa, por exemplo, que a receita deve estar legível, com carimbo e assinatura de quem prescreveu, e que quem mora em Juazeiro e foi atendido em outro município ou na rede particular precisa levar o cartão da família ou comprovante de residência."],
+["Preciso pagar pelo medicamento?","Os medicamentos dispensados pelo SUS nas Farmácias da Família e os itens cobertos pelo Programa Farmácia Popular são gratuitos quando a pessoa atende às regras de retirada. Confira se o medicamento e a apresentação desejada fazem parte da lista aplicável e se estão disponíveis."],
+["Posso retirar todos os meses com a mesma receita?","Em alguns casos, sim, enquanto a receita estiver válida e de acordo com as regras de quantidade e intervalo de retirada. No Farmácia Popular, as prescrições têm, em geral, validade de 180 dias a partir da emissão e, para contraceptivos, 365 dias. Alguns medicamentos e tipos de receita podem seguir regras específicas. Segundo a lista municipal de 2025, nas Farmácias da Família os remédios de uso contínuo costumam ser entregues a cada 30 dias, com receita valendo 6 meses; os anticoncepcionais, 12 meses; tratamentos curtos, 30 dias; e antibióticos, 10 dias. Remédios de controle especial têm regras próprias. Confirme a validade e as condições de retirada com a farmácia."],
+["Onde consigo uma nova receita?","Procure sua UBS para receber orientação sobre o atendimento necessário e a renovação da receita. A equipe de saúde avaliará sua situação e informará os próximos passos."],
+["O que faço se meu medicamento não estiver disponível?","Pergunte à farmácia se há previsão de disponibilidade e procure orientação na UBS. Não substitua nem interrompa o medicamento por conta própria."]
+];
+
+/* ===== CÓDIGO ===== */
+var $=function(i){return document.getElementById(i)};
+var norm=function(s){return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim()};
+var esc=function(s){var d=document.createElement("div");d.textContent=s;return d.innerHTML};
+var sizes=[17,20,23,26],si=1;
+function fz(d){si=Math.max(0,Math.min(3,si+d));document.documentElement.style.fontSize=sizes[si]+"px"}
+var guia=false;
+var NEXT={busca:["lista","Próximo passo: preparar minha ida"],lista:["locais","Próximo passo: ver farmácias e rotas"],locais:["duvidas","Próximo passo: tirar dúvidas"],duvidas:["home","Concluir e voltar ao início"]};
+function nextStep(id){document.querySelectorAll(".next").forEach(function(x){x.remove()});if(!guia||!NEXT[id])return;var n=NEXT[id],d=document.createElement("div");d.className="next card";d.innerHTML='<p class="small">Seu caminho</p><button class="pri" type="button" onclick="show(\''+n[0]+'\')">'+n[1]+'</button>';$(id).appendChild(d)}
+function show(id){para();if(id==="home")guia=false;document.querySelectorAll("main>section").forEach(function(s){s.hidden=s.id!==id});window.scrollTo(0,0);if(id==="home")camInit();if(id==="busca")setTimeout(function(){$("q").focus()},50);nextStep(id)}
+$("upd").textContent=CONFIG.ultimaAtualizacao;
+$("fontes").textContent="Fontes: "+CONFIG.fonteRemume+" (conferência: "+CONFIG.dataRemume+"); "+CONFIG.fontePopular+" (conferência: "+CONFIG.dataPopular+").";
+
+function names(){var o=[];REMUME.forEach(function(r){o.push(r[0])});POPULAR.forEach(function(p){o.push(p[0]);if(p[3])o.push(p[3])});return o.filter(function(v,i,a){return a.indexOf(v)===i&&v.length<45})}
+function match(list,q){return list.filter(function(r){return norm(r[0]+" "+(r[3]&&typeof r[3]==="string"?r[3]:"")).indexOf(q)>-1})}
+function pres(s){return s.split(";").map(function(x){return '<span class="tag">'+esc(x.trim())+'</span>'}).join("")}
+function rrow(r){var l=LC[r[2]]||r[2],n=r[3]===1?" Medicamento de controle especial: exige receita específica; confirme com a farmácia.":r[3]===2?" Costuma exigir receita em 2 vias.":"";
+ return '<div class="pr"><span class="tag">'+esc(r[1])+'</span><br><span class="small">Local de acesso informado: '+esc(l)+'.'+n+'</span></div>'}
+function busca(){
+  var raw=$("q").value,q=norm(raw),al=ALIAS[q];$("sug").innerHTML="";$("res").innerHTML="";
+  if(q.length<2)return;
+  names().filter(function(n){return norm(n).indexOf(q)>-1&&norm(n)!==q}).slice(0,6).forEach(function(n){
+    var b=document.createElement("button");b.type="button";b.textContent=n;b.onclick=function(){$("q").value=n;busca()};$("sug").appendChild(b)});
+  var qq=al||q,rm=match(REMUME,qq),pp=match(POPULAR,qq),pv=pp.filter(function(p){return p[2]}),h="";
+  if(!rm.length&&!pp.length){$("res").innerHTML='<div class="card"><strong>Não encontramos esse medicamento nas listas utilizadas pelo site. Confira a escrita ou procure orientação na UBS ou na farmácia.</strong></div>';return}
+  h='<div class="card"><h2>Você pesquisou: '+esc(raw)+'</h2>';
+  if(al)h+='<p class="small">“'+esc(raw)+'” é nome de marca. Mostramos o princípio ativo correspondente. Não garantimos que outras marcas estejam disponíveis.</p>';
+  h+='<p><strong> Farmácias da Família</strong></p>';
+  if(rm.length){var last="";h+=rm.map(function(r){var t=r[0]!==last?'<p style="margin-bottom:0"><strong>'+esc(r[0])+'</strong></p>':'';last=r[0];return t+rrow(r)}).join("")+'<p>Consta na lista municipal. Confirme em qual unidade pode ser retirado e se há estoque.</p>'}
+  else h+='<p>Não encontramos nesta lista. Procure orientação na UBS ou na farmácia.</p>';
+  h+='<hr><p><strong> Farmácia Vitória — Farmácia Popular</strong></p>';
+  if(pv.length){h+=pv.map(function(p){return '<p style="margin-bottom:0">'+esc(p[0])+(p[3]?' <span class="tag">'+esc(p[3])+'</span>':'')+'<br>'+pres(p[1])+'</p>'}).join("")+'<p>Consta na lista utilizada pelo projeto. Confira a concentração e consulte a farmácia.</p><p class="small">Dado fornecido pela equipe do projeto, sujeito à confirmação e atualização pela farmácia. Não indica estoque.</p>'}
+  else if(pp.length){h+='<p>Este item não consta na lista da Farmácia Vitória informada ao projeto. Consulte a farmácia ou a UBS.</p>'}
+  else h+='<p>Não encontramos nesta lista. Consulte a farmácia.</p>';
+  $("res").innerHTML=h+'</div>';
+}
+$("q").addEventListener("input",busca);
+
+function ckInit(){$("ck").innerHTML=CHECK.map(function(c){return '<label class="ck"><input type="checkbox" data-r="'+c[1]+'" onchange="ckChk()"><span>'+esc(c[0])+'</span></label>'}).join("")}
+function ckChk(){var all=[].slice.call(document.querySelectorAll("#ck input[data-r='1']"));$("pronto").hidden=!all.every(function(x){return x.checked})}
+function limpa(){ckInit();ckChk()}
+
+var ALL=LOCAIS.concat([UBS]);
+function lcard(l,i){var q=encodeURIComponent(l.n.split(" — ")[0]+", "+l.e);
+ return '<div class="card"><h2>'+esc(l.n)+'</h2><p>'+esc(l.e)+'</p>'+
+ (l.h?'<p><strong>Horário:</strong> '+esc(l.h)+' <span class="small">(pode mudar)</span></p>':'')+
+ '<p class="small">Telefone: '+(l.tt?esc(l.tt):'a confirmar')+'</p>'+(l.x?'<p class="small">'+esc(l.x)+'</p>':'')+
+ (l.t?'<div class="row"><a class="btn pri" href="tel:+55'+l.t+'"> Ligar</a><a class="btn" target="_blank" rel="noopener" href="https://wa.me/55'+l.t+'"> WhatsApp</a></div>':'')+
+ '<div class="row"><a class="btn pri" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination='+q+'"> Abrir rota no Google Maps</a></div>'+
+ '<button type="button" onclick="cp('+i+',this)"> Copiar endereço</button><p class="small">Se o link não abrir, copie o endereço e cole no aplicativo de mapas.</p></div>'}
+function loc(){$("loc").innerHTML=LOCAIS.map(lcard).join("");$("ubs").innerHTML=lcard(UBS,LOCAIS.length)}
+function cp(i,b){var t=ALL[i].e,ok=function(){b.textContent="Endereço copiado"};if(navigator.clipboard)navigator.clipboard.writeText(t).then(ok,function(){b.textContent="Copie manualmente: "+t});else b.textContent="Copie manualmente: "+t}
+
+$("faq").innerHTML=FAQ.map(function(f){return '<details><summary>'+esc(f[0])+'</summary><p>'+esc(f[1])+'</p></details>'}).join("");
+
+function camInit(){
+ $("cam").innerHTML='<p><strong>O que você precisa fazer?</strong></p><div class="menu"><button type="button" onclick="camRec()"><span class="i" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></span> Procurar um medicamento <span class="go" aria-hidden="true">&rsaquo;</span></button></div>'}
+function camRec(){
+ $("cam").innerHTML='<p><strong>Você já tem uma receita?</strong></p><div class="row"><button class="pri" type="button" onclick="camSim()">Sim</button><button type="button" onclick="camNao()">Não</button></div><button type="button" onclick="camInit()"> Voltar</button>'}
+function camSim(){guia=true;show("busca");var d=document.createElement("div");d.className="ok";d.innerHTML='Muito bem! Pesquise seu medicamento abaixo. Depois, use o botão "Preparar minha ida".';$("busca").insertBefore(d,$("busca").children[1]);setTimeout(function(){d.remove()},15000)}
+function camNao(){$("cam").innerHTML='<div class="ok">Procure sua UBS para receber orientação sobre a avaliação e a receita.</div><div class="row"><button type="button" onclick="show(\'locais\');document.getElementById(\'ubsT\').scrollIntoView()"> Ver UBS de referência</button><button type="button" onclick="show(\'home\')"> Voltar ao início</button></div>'}
+
+var TTS="speechSynthesis" in window&&"SpeechSynthesisUtterance" in window,pz=false;
+function ui(on){$("fabmain").hidden=on;$("fabctl").hidden=!on;$("pbtn").textContent="Pausar";pz=false}
+function ouvir(){
+ if(!TTS){$("ttsmsg").hidden=false;setTimeout(function(){$("ttsmsg").hidden=true},7000);return}
+ var sec=document.querySelector("main>section:not([hidden])");if(!sec)return;
+ speechSynthesis.cancel();
+ var el=sec.cloneNode(true);
+ el.querySelectorAll("button,.sug,.next,[hidden]").forEach(function(x){x.remove()});
+ var t=(el.textContent||"").replace(/\s+/g," ").trim();
+ var parts=t.match(/[^.!?:]+[.!?:]*\s*/g)||[t];
+ var v=speechSynthesis.getVoices().filter(function(x){return /pt[-_]BR/i.test(x.lang)})[0];
+ ui(true);
+ parts.forEach(function(p,i){var u=new SpeechSynthesisUtterance(p);u.lang="pt-BR";u.rate=.9;if(v)u.voice=v;
+  if(i===parts.length-1)u.onend=function(){ui(false)};
+  speechSynthesis.speak(u)})}
+function pausa(){if(!TTS)return;var b=$("pbtn");if(pz){speechSynthesis.resume();pz=false;b.textContent="Pausar"}else{speechSynthesis.pause();pz=true;b.textContent="Continuar"}}
+function para(){if(TTS){speechSynthesis.cancel()}ui(false)}
+
+ckInit();loc();camInit();
+</script>
+</body>
+</html>
